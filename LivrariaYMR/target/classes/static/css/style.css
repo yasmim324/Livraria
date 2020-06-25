@@ -1,0 +1,48 @@
+.um {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+.descricao, .linha{
+  text-align: center; 
+  padding: 2px;
+ 
+}
+
+.linhas:nth-child(even){background-color: #C0C0C0}
+
+.descricao {
+  background-color: 	#000000;
+  color: white;
+}
+
+.descricao, .linha {
+  text-align: center;
+  padding: 2px;
+}
+
+.autor {
+	text-align: center;
+}
+.acao {
+	text-align: center;
+}
+.nome{
+	text-align: center;
+}
+
+.bnt{
+        background:blue;
+        color:#ffffff;
+        border-radius: 12px;
+        font-size: 16px;
+}
+body {
+  background-color:#f5f5ef;
+}
+
+
+select{
+	border-radius: 5px;
+}
+

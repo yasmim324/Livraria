@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8">
+<link rel="stylesheet" th:href="@{/css/style.css}"/>
+<title>Livraria</title>
+</head>
+<body bgcolor= #ffffff text= #000000 >
+<div >
+<h3 >Livro (Cadastro/Edição)</h3>
+
+<form th:action="@{/save}" th:object="${livro}" method="post">
+
+<table >
+
+<tr>
+<th >Título: </th>
+<td ><input type="text" th:field="*{titulo}"> </td>
+</tr>
+<tr>
+<th >Descrição:</th>
+ <td ><input type="text" th:field="*{descricao}"></td>
+</tr>
+<tr>
+<th >Ano: </th>
+<td ><input type="number" th:field="*{ano}"></td>
+</tr>
+<tr>
+<th >Preço: </th>
+<td ><input type="number" th:field="*{preco}"></td>
+</tr>
+<tr>
+<th>Gênero:</th>
+<td ><select th:field="*{genero}">
+<option th:each="genero : ${generos}" th:text="${genero.nome}" th:value=${genero.id}></option>
+
+</select></td>
+</tr>
+<tr>
+<th>Editora:</th>
+<td ><select th:field="*{editora}">
+<option th:each="editora : ${editoras}" th:text="${editora.nome}" th:value=${editora.id}></option>
+
+</select></td>
+</tr>
+<tr>
+<th>Autor:</th>
+<td  ><select th:field="*{autor}" multiple >
+<option th:each="autor : ${autor}" th:text="${autor.nome}" th:value=${autor.id} ></option>
+
+</select></td>
+
+</tr>
+
+<tr>
+<td></td>
+<td ><input type="hidden" th:field="*{id}">
+<button  class="bnt" type="submit" >Salvar</button></td>
+</tr>
+
+ </table>
+
+
+
+
+</div>
+<hr />
+<div >
+
+<h3 class="nome">Lista de Livros</h3>
+<div >
+<table class="um" >
+       <tr>
+            <th class="descricao">Título</th>
+            <th class="descricao">Descrição</th>
+            <th class="descricao">Ano</th>
+            <th class="descricao">Preço</th>
+            <th class="descricao">Gênero</th>
+            <th class="descricao">Editora</th>
+            <th class="descricao">Autor</th>
+            <th class="descricao">Ações</th>
+            
+       </tr>
+       <tr class="linhas" th:each="livro : ${lista}" > 
+           <td class="linha" th:text="${livro.titulo}">
+           <td class="linha" th:text="${livro.descricao}"></td>
+           <td class="linha" th:text="${livro.ano}"></td>
+           <td class="linha" th:text="${livro.preco}"></td>
+           <td class="linha" th:text="${livro.genero} != null ?    ${livro.genero.nome} : null"></td>         
+           <td class="linha" th:text="${livro.editora} != null ?    ${livro.editora.nome} : null"></td>      
+          <td class="autor" th:each = "autor : ${livro.nomesAutores}" th:text="${autor.nome}" ></td>
+           <td class="acao"><a th:href="@{'/update/' + ${livro.id}}"><img width="20px" height="20px" src=/img/edit.png/></a>
+           <a th:href="@{'/delete/' + ${livro.id}}"><img width="20px" height="20px" src=/img/excluir.png/></a></td>
+           
+       </tr>
+    
+    
+    </table>
+    </div>
+</div>
+</body>
+</html>
